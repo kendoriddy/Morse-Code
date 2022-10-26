@@ -48,9 +48,17 @@ def decode_word(morse_word)
   word
 end
 
-def decode(sentence)
-    morse_words = sentence.split('   ')
-    output = ''
-    morse_words.each { |morse_word| output += decode_word(morse_word) }
-    output
+def decode(morse_sentence)
+  # splits at every 3 spaces
+  morse_words = morse_sentence.split('   ')
+  output = ''
+  morse_words.each { |morse_word| output += "#{decode_word(morse_word)} " }
+  output.strip
 end
+
+# Tests
+puts decode_char('-.-') #=> K
+puts decode_word('-- .. -.-. .-. --- ...- . .-. ... .') # => MICROVERSE
+puts decode('-- -.--   -. .- -- .') # => MY NAME
+sentence = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
+puts decode(sentence) # => A BOX FULL OF RUBIES

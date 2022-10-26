@@ -36,8 +36,14 @@ MORSE_TRANSLATOR = {
   '---..' => '8',
   '----.' => '9',
   '-----' => '0'
-}
+}.freeze
 
-def decode_char(char)
-    MORSE_TRANSLATOR[char].upcase
+def decode_char(morse_char)
+  MORSE_TRANSLATOR[morse_char].upcase
+end
+
+def decode_word(morse_word)
+  word = ''
+  morse_word.split.each { |letter| word += decode_char(letter) }
+  word
 end

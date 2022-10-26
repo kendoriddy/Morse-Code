@@ -47,3 +47,10 @@ def decode_word(morse_word)
   morse_word.split.each { |letter| word += decode_char(letter) }
   word
 end
+
+def decode(sentence)
+    morse_words = sentence.split('   ')
+    output = ''
+    morse_words.each { |morse_word| output += decode_word(morse_word) }
+    output
+end
